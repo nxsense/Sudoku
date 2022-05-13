@@ -15,6 +15,12 @@ namespace Sudoku
         public Form1()
         {
             InitializeComponent();
+            field.createCells(gameField);
+            
         }
+
+        private Field field = new Field();
+
+        
     }
 }
