@@ -60,10 +60,28 @@ namespace Sudoku
         }
         public bool isValueValid(int value, int x, int y, Cell[,] cells)
         {
-            bool flag = checkVertical(value, x, y, cells);
-            flag = checkHorizontal(value, x, y, cells);
-            flag = checkBlock(value, x, y, cells);
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                // Check all the cells in vertical direction
+                if (i != y && cells[x, i].Value == value)
+                    return false;
+
+                // Check all the cells in horizontal direction
+                if (i != x && cells[i, y].Value == value)
+                    return false;
+            }
+            
+            // Check all the cells in the specific block
+            for (int i = x - (x % 3); i < x - (x % 3) + 3; i++)
+            {
+                for (int j = y - (y % 3); j < y - (y % 3) + 3; j++)
+                {
+                    if (i != x && j != y && cells[i, j].Value == value)
+                        return false;
+                }
+            }
+
+            return true;
         }
         public bool checkVertical(int value, int x, int y, Cell[,] cells)
         {
