@@ -42,6 +42,8 @@ namespace Sudoku
             this.rules = new System.Windows.Forms.Button();
             this.time = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.clearBtn = new System.Windows.Forms.Button();
+            this.solveByComp = new System.Windows.Forms.Button();
             this.levels.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,9 +99,9 @@ namespace Sudoku
             this.levels.Controls.Add(this.intermidiate);
             this.levels.Controls.Add(this.beginner);
             this.levels.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.levels.Location = new System.Drawing.Point(556, 243);
+            this.levels.Location = new System.Drawing.Point(556, 301);
             this.levels.Name = "levels";
-            this.levels.Size = new System.Drawing.Size(172, 214);
+            this.levels.Size = new System.Drawing.Size(172, 207);
             this.levels.TabIndex = 1;
             this.levels.TabStop = false;
             // 
@@ -107,7 +109,7 @@ namespace Sudoku
             // 
             this.startGame.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.startGame.Font = new System.Drawing.Font("Britannic Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.startGame.Location = new System.Drawing.Point(556, 57);
+            this.startGame.Location = new System.Drawing.Point(556, 121);
             this.startGame.Name = "startGame";
             this.startGame.Size = new System.Drawing.Size(172, 68);
             this.startGame.TabIndex = 2;
@@ -119,7 +121,7 @@ namespace Sudoku
             // 
             this.check.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.check.Font = new System.Drawing.Font("Britannic Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.check.Location = new System.Drawing.Point(556, 131);
+            this.check.Location = new System.Drawing.Point(556, 195);
             this.check.Name = "check";
             this.check.Size = new System.Drawing.Size(172, 69);
             this.check.TabIndex = 3;
@@ -131,7 +133,7 @@ namespace Sudoku
             // 
             this.rules.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.rules.Font = new System.Drawing.Font("Britannic Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.rules.Location = new System.Drawing.Point(556, 483);
+            this.rules.Location = new System.Drawing.Point(556, 514);
             this.rules.Name = "rules";
             this.rules.Size = new System.Drawing.Size(172, 70);
             this.rules.TabIndex = 4;
@@ -142,27 +144,53 @@ namespace Sudoku
             // time
             // 
             this.time.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.time.Location = new System.Drawing.Point(556, 8);
+            this.time.Location = new System.Drawing.Point(556, 79);
             this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(166, 47);
+            this.time.Size = new System.Drawing.Size(166, 39);
             this.time.TabIndex = 5;
             this.time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Britannic Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label1.Location = new System.Drawing.Point(556, 209);
+            this.label1.Location = new System.Drawing.Point(550, 267);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(168, 31);
             this.label1.TabIndex = 6;
             this.label1.Text = "Choose the level!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // clearBtn
+            // 
+            this.clearBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.clearBtn.Font = new System.Drawing.Font("Britannic Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.clearBtn.Location = new System.Drawing.Point(556, 2);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(172, 64);
+            this.clearBtn.TabIndex = 7;
+            this.clearBtn.Text = "ClearAll";
+            this.clearBtn.UseVisualStyleBackColor = false;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // solveByComp
+            // 
+            this.solveByComp.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.solveByComp.Font = new System.Drawing.Font("Britannic Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.solveByComp.Location = new System.Drawing.Point(60, 32);
+            this.solveByComp.Name = "solveByComp";
+            this.solveByComp.Size = new System.Drawing.Size(355, 57);
+            this.solveByComp.TabIndex = 8;
+            this.solveByComp.Text = "Solve by computer";
+            this.solveByComp.UseVisualStyleBackColor = false;
+            this.solveByComp.Click += new System.EventHandler(this.solveByComp_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 596);
+            this.Controls.Add(this.solveByComp);
+            this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.time);
             this.Controls.Add(this.rules);
@@ -178,6 +206,10 @@ namespace Sudoku
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button solveByComp;
+
+        private System.Windows.Forms.Button clearBtn;
 
         private System.Windows.Forms.Label label1;
 

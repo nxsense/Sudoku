@@ -6,18 +6,17 @@ namespace Sudoku
 {
     public class Values
     {
-        
+        private int N = 9;
         public void showRandomValues(int hintsCount, Cell[,] cells)
         {
             for (int i = 0; i < hintsCount; i++)
             {
-                var rX = random.Next(9);
-                var rY = random.Next(9);
+                    var rX = random.Next(N);
+                    var rY = random.Next(N);
 
-                cells[rX, rY].Text = cells[rX, rY].Value.ToString();
-                cells[rX, rY].ForeColor = Color.Black;
-                cells[rX, rY].IsLocked = true;
-
+                    cells[rX, rY].Text = cells[rX, rY].Value.ToString();
+                    cells[rX, rY].ForeColor = Color.Black;
+                    cells[rX, rY].IsLocked = true;
             }
         }
         public void loadValues(Cell[,] cells)
@@ -58,9 +57,10 @@ namespace Sudoku
 
             return true;
         }
+
         public bool isValueValid(int value, int x, int y, Cell[,] cells)
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < N; i++)
             {
                 // Check all the cells in vertical direction
                 if (i != y && cells[x, i].Value == value)
@@ -70,7 +70,7 @@ namespace Sudoku
                 if (i != x && cells[i, y].Value == value)
                     return false;
             }
-            
+
             // Check all the cells in the specific block
             for (int i = x - (x % 3); i < x - (x % 3) + 3; i++)
             {
@@ -83,34 +83,8 @@ namespace Sudoku
 
             return true;
         }
-        public bool checkVertical(int value, int x, int y, Cell[,] cells)
-        {
-            bool flag = true;
-            for (int i = 0; i < 9; i++)
-                if (i != y && cells[x, i].Value == value) flag = false;
-            return flag;
-        }
-        public bool checkHorizontal(int value, int x, int y, Cell[,] cells)
-        {
-            bool flag = true;
-            for (int i = 0; i < 9; i++)
-                if (i != x && cells[y, i].Value == value) flag = false;
-            return flag;
-        }
-        public bool checkBlock(int value, int x, int y, Cell[,] cells)
-        {
-            bool flag = true;
-            for (int i = x - (x % 3); i < x - (x % 3) + 3; i++)
-            {
-                for (int j = y - (y % 3); j < y - (y % 3) + 3; j++)
-                {
-                    if (i != x && j != y && cells[i, j].Value == value)
-                     flag = false;
-                }
-            }
-            return flag;
-            
-        }
-        
+       
     }
+    
+   
 }

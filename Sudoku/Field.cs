@@ -6,7 +6,8 @@ namespace Sudoku
 {
     public class Field
     {
-        private Cell[,] cells = new Cell[9, 9];
+        private static int N = 9;
+        private Cell[,] cells = new Cell[N, N];
 
         public Cell[,] Cells
         {
@@ -14,11 +15,12 @@ namespace Sudoku
             set => cells = value;
         }
 
+        
         public void createCells(Panel gameField)
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < N; i++)
             {
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j < N; j++)
                 {
                     //creating cells w styles and so on
                     cells[i,j] = new Cell();
@@ -61,17 +63,17 @@ namespace Sudoku
         }
         private void cell_buttonClick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < N; i++)
             {
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j < N; j++)
                 {
                     cells[i, j].BackColor = ((i / 3) + (j / 3)) % 2 == 0 ? SystemColors.Control : Color.LightGray;
                 }
             }
             var cell = sender as Cell;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < N; i++)
             {
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j < N; j++)
                 {
                     if (cells[i, j].Text == cell.Text && cells[i, j].Text != "")
                     {
@@ -80,6 +82,6 @@ namespace Sudoku
                 }
             }
         }
-
+        
     }
 }
