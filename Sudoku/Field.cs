@@ -61,6 +61,17 @@ namespace Sudoku
 
             }
             if(char.IsWhiteSpace(e.KeyChar)) cell.Clear();
+            cell.BackColor = Color.LightSkyBlue;
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    if (cells[i, j].Text == cell.Text && cells[i, j].Text != "")
+                    {
+                        cells[i, j].BackColor = Color.LightSkyBlue;
+                    }
+                }
+            }
         }
         private void cell_buttonClick(object sender, EventArgs e)
         {
@@ -72,6 +83,24 @@ namespace Sudoku
                 }
             }
             var cell = sender as Cell;
+            
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    if(cells[i, j].X == cell.X) cells[i, j].BackColor = Color.DarkKhaki;
+                    if(cells[i, j].Y == cell.Y) cells[i, j].BackColor = Color.DarkKhaki;
+                }
+            }
+
+            for (int i = cell.X - (cell.X % 3); i < cell.X - (cell.X % 3) + 3; i++)
+            {
+                for (int j = cell.Y - (cell.Y % 3); j < cell.Y - (cell.Y % 3) + 3; j++)
+                {
+                    cells[i, j].BackColor = Color.DarkKhaki;
+                }
+            }
+           
             for (int i = 0; i < N; i++)
             {
                 for (int j = 0; j < N; j++)

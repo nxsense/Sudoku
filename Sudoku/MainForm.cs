@@ -23,6 +23,12 @@ namespace Sudoku
         private DateTime _dateTime;
         Timer timer = new Timer();
 
+        public Timer Timer
+        {
+            get => timer;
+            set => timer = value;
+        }
+
         private void startGame_Click(object sender, EventArgs e)
         {
             if (!beginner.Checked && !intermidiate.Checked && !hard.Checked)
