@@ -35,6 +35,7 @@ namespace Sudoku
                     cells[i, j].Y = j;
                     cells[i, j].KeyPress += cell_keyPressed;
                     cells[i, j].Click += cell_buttonClick;
+                    cells[i, j].IsLocked = true;
                     gameField.Controls.Add(cells[i, j]); 
                 }
             }

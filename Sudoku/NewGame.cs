@@ -12,6 +12,10 @@ namespace Sudoku
 
         public void startNewGame(Cell[,] cells, RadioButton beginner, RadioButton intermediate, RadioButton hard)
         {
+            foreach (var cell in cells)
+            {
+                cell.IsLocked = false;
+            }
             _values.loadValues(cells);
             int hintsCount = 0;
             if (beginner.Checked) hintsCount = 45;

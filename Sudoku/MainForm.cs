@@ -76,30 +76,19 @@ namespace Sudoku
         private void solveByComp_Click(object sender, EventArgs e)
         {
             int[,] board = solver.convertToMatrix(field.Cells);
+            foreach (var cell in field.Cells)
+            {
+                if (!cell.IsLocked)
+                {
+                    cell.Clear();
+                }
+
+            }
             if (solver.solveSudoku(board, N))
             {
                 field.Cells = solver.convertToCells(field.Cells, board);
             }
-
             timer.Stop();
-            DialogResult result = MessageBox.Show("Do you want to try again?", "Start new game?", MessageBoxButtons.OK);
-            if (result == DialogResult.OK)
-            {
-                foreach (var cell in field.Cells)
-                {
-                    cell.Value = 0;
-                    cell.Text = "";
-                }
-                newGame.startNewGame(field.Cells, beginner, intermidiate, hard);
-
-                if (beginner.Checked || intermidiate.Checked || hard.Checked)
-                {
-                    _dateTime = DateTime.Now;
-                    timer.Interval = 10;
-                    timer.Tick += tickTimer;
-                    timer.Start();
-                }
-            }
         }
     }
 }
